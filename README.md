@@ -4,3 +4,9 @@ HireSphere is a web-based **Job Search and Application Platform** designed to he
 The platform also includes an **Admin Dashboard** to manage and monitor job applications.
 
 This project was developed as an **academic mini project**.
+
+## 🎯 Project Objective
+To simplify the job searching process by providing:
+- Easy job discovery based on role and location
+- Online job application functionality
+- Admin-side application management
