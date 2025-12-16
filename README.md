@@ -28,3 +28,11 @@ To simplify the job searching process by providing:
 - Secure logout functionality
 
 ---
+## 🧠 Technologies Used
+- **HTML5** – Page structure
+- **CSS3** – Styling and responsiveness
+- **JavaScript** – Client-side logic
+- **Adzuna Jobs API** – Live job data
+- **Browser LocalStorage** – Data persistence
+
+---
