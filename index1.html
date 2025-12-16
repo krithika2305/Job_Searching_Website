@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HireSphere - Home</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f9;
+      color: #333;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #e0f2f7, #6fb3ea);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content:right;
+      align-items: center;
+      padding: 10px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+    
+    .logo h1 {
+      font-size: 24px;
+      color: #007bff;
+      margin-left: 10px;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #555;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      display:table-column;
+    }
+
+    nav a:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: linear-gradient(to right, rgba(19, 19, 19, 0.7), rgba(59, 65, 63, 0.8)),
+      url('background.jpeg') no-repeat center center/cover;
+      padding: 180px 20px 100px;
+      text-align: center;
+      position: relative;
+      color: #fff;
+    padding-bottom: 212px;
+
+    }
+    .logo-overlay {
+      position: absolute;
+      top: -70px;
+      left: 10px;
+      z-index: 2;
+    }
+
+    .logo-overlay img {
+      height: 350px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      margin: 0 0 15px;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+    }
+
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-bar input,
+    .search-bar select,
+    .search-bar button {
+      padding: 12px;
+      margin: 5px;
+      border-radius: 15px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input,
+    .search-bar select {
+      width: 220px;
+    }
+
+    .search-bar button {
+        position: relative;
+        overflow: hidden;
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        z-index: 1;
+        transition: background 0.3s;
+    }
+    .search-bar button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 10%, transparent 10.01%);
+      background-size: 20% 20%;
+      animation: sparkle 1.2s infinite linear;
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    @keyframes sparkle {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+    .search-bar button:hover {
+      background-color: #0056b3;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+    
+    .search-bar select:hover,
+    .search-bar input:hover {
+      border-color: #007bff;
+      background-color: #e9ecef;
+    }
+    
+    .search-bar input::placeholder {
+      color: #999;
+    }
+
+    .jobs-section {
+      display: none;
+      padding: 60px 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      background: linear-gradient(to bottom, #e0f2f7, #6fb3ea);
+      min-height: 400px;
+    }
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .job-card {
+      background: linear-gradient(to bottom, #e0f2f7, #8ec5f2);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(213, 238, 73, 0.4);
+      width: 300px;
+      padding: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+opacity: 0;
+      text-align: left;
+      transform: translateY(20px); /* Start with offset */
+      animation: fadeSlideUp 0.6s ease forwards;
+    }
+    
+    .job-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .job-card h3 {
+      color: #007bff;
+      font-size: 22px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .job-card p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .job-card .company-logo {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .job-card button {
+      background-color:#007bff; 
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: auto;
+      transition: background-color 0.3s ease;
+    }
+
+    .job-card button:hover {
+      background-color: #0099cc;
+    }
+    
+    .loading-message, .error-message {
+        text-align: center;
+        color: #171616;
+        font-size: 18px;
+        width: 50%;
+        padding-top: 5px;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #037bfb;
+      color: white;
+      padding: 20px 0;
+
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .jobs-section {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    /* Modal styles for application form */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 30px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .modal-content h2 {
+      color: #007bff;
+      margin-top: 0;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+
+      nav {
+        margin-top: 10px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .search-bar {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .search-bar input,
+      .search-bar select,
+      .search-bar button {
+        width: 90%;
+        max-width: 350px;
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index1.html">Home</a>
+    <a href="About.html">About Us</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<section class="hero">
+    <div class="logo-overlay">
+    <img src="Logo.png" alt="HireSphere Logo">
+    </div>
+  <div class="hero-content">
+    <h1 id="greeting-message" style="margin-top: 0; font-size: 26px; color: #fff;"></h1>
+    <p>Where ambition meets opportunity — discover your dream job with HireSphere’s advanced job-matching system.</p>
+    <div class="search-bar">
+      <input type="text" id="job-title" placeholder="Enter job title (e.g. developer)">
+      <select id="job-location">
+        <option value="india" selected>India</option>
+        <option value="mysore">Mysore</option>
+        <option value="bangalore">Bangalore</option>
+        <option value="delhi">Delhi</option>
+        <option value="hyderabad">Hyderabad</option>
+        <option value="mangalore">Mangalore</option>
+      </select>
+      <button onclick="searchJobs()">Search</button>
+    </div>
+  </div>
+</section>
+
+<section class="jobs-section" id="job-cards"></section>
+
+<footer>
+  <p>© 2025 HireSphere. All rights reserved.</p>
+</footer>
+
+<div id="applicationModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Apply for <span id="modal-job-title"></span></h2>
+    <p>Company: <strong id="modal-company-name"></strong></p>
+    <p>Location: <strong id="modal-job-location"></strong></p>
+
+    <form id="applicationForm">
+      <input type="text" id="applicant-name" placeholder="Your Full Name" required>
+      <input type="email" id="applicant-email" placeholder="Your Email Address" required>
+      <button type="submit" class="job-card-button">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+<script>
+    // Check if admin is logged in
+  if (localStorage.getItem('loggedIn') !== 'true') {
+    // Note: You would likely redirect to 'login.html' here, assuming you have one.
+    // For now, this is a placeholder check.
+    // window.location.href = 'login.html'; 
+  }
+  const app_id = '23157f92';
+  const app_key = 'ff348f25a0b463d61d4304cb56c7f3a4';
+
+  async function fetchJobs(title = 'developer', location = 'India', job_type = '', sort = '') {
+    const container = document.getElementById('job-cards');
+    const jobsSection = document.querySelector('.jobs-section');
+    container.innerHTML = `<div class="loading-message">Loading jobs...</div>`;
+    jobsSection.style.display = 'flex';
+
+    let url = `https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=${app_id}&app_key=${app_key}&results_per_page=15&what=${encodeURIComponent(title)}&where=${encodeURIComponent(location)}`;
+
+  
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      const jobs = data.results;
+
+      container.innerHTML = '';
+
+      if (!jobs || jobs.length === 0) {
+        container.innerHTML = `<div class="error-message">No jobs found for your search.</div>`;
+        return;
+      }
+
+     jobs.forEach((job, index) => {
+        const card = document.createElement('div');
+        card.className = 'job-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.innerHTML = `
+        <img src="Logo1.png" alt="Job Image">
+          <h3>${job.title}</h3>
+          <p><strong>Company:</strong> ${job.company.display_name}</p>
+          <p><strong>Location:</strong> ${job.location.display_name}</p>
+          <p><strong>Salary:</strong> ${job.salary_min ? `₹${new Intl.NumberFormat().format(Math.round(job.salary_min))}` : 'Not disclosed'}</p>
+          <button onclick="showApplicationForm('${job.title}', '${job.company.display_name}', '${job.location.display_name}')">Apply</button>
+        `;
+        container.appendChild(card);
+      });
+
+    } catch (error) {
+      console.error('Failed to fetch jobs:', error);
+      container.innerHTML = `<div class="error-message">Error loading jobs. Please try again.</div>`;
+    }
+  }
+
+  function searchJobs() {
+    const title = document.getElementById('job-title').value.trim() || 'developer';
+    const location = document.getElementById('job-location').value || 'india';
+    
+    fetchJobs(title, location);
+  }
+
+  // Application form functionality
+  const modal = document.getElementById("applicationModal");
+  const closeBtn = document.querySelector(".close-btn");
+  const form = document.getElementById("applicationForm");
+
+  let currentJobDetails = {};
+
+  function showApplicationForm(title, company, location) {
+    currentJobDetails = { title, company, location };
+    document.getElementById("modal-job-title").textContent = title;
+    document.getElementById("modal-company-name").textContent = company;
+    document.getElementById("modal-job-location").textContent = location;
+    modal.style.display = "block";
+  }
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitApplication();
+  });
+
+  function submitApplication() {
+    const name = document.getElementById('applicant-name').value;
+    const email = document.getElementById('applicant-email').value;
+
+    // Input validation
+    if (!/^[a-zA-Z\s]+$/.test(name)) {
+      alert("Please enter a valid full name with only letters and spaces.");
+      return;
+    }
+if (/[A-Z]/.test(email)) {
+      alert("Email should not contain uppercase letters.");
+      return;
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    const newApplication = {
+      name: name,
+      email: email,
+      title: currentJobDetails.title,
+      company: currentJobDetails.company,
+      location: currentJobDetails.location,
+      appliedAt: new Date().toLocaleString()
+    };
+
+    const applications = JSON.parse(localStorage.getItem('jobApplications')) || [];
+    applications.push(newApplication);
+    localStorage.setItem('jobApplications', JSON.stringify(applications));
+
+    alert('Application submitted successfully!');
+    modal.style.display = "none";
+    form.reset();
+  }
+  // Greeting functionality
+  function displayGreeting() {
+    const hour = new Date().getHours();
+    const greetingEl = document.getElementById('greeting-message');
+    let greeting = 'Welcome';
+
+    if (hour < 12) {
+      greeting = 'Good Morning';
+    } else if (hour < 17) {
+      greeting = 'Good Afternoon';
+    } else {
+      greeting = 'Good Evening';
+    }
+
+    greetingEl.textContent = `${greeting}, Job Seeker!`;
+  }
+  window.addEventListener('DOMContentLoaded', displayGreeting);
+
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!-- Already shared code of the applications table with delete feature -->
+<!-- Begin: admin_applications.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - View Applications</title>
+  <style>
+    /* ... your existing CSS from above ... */
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo">
+    <img src="Logo.png" alt="HireSphere Logo">
+    <h1>HireSphere</h1>
+  </div>
+  <nav>
+    <a href="index1.html">Home</a>
+    <a href="About.html">About Us</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+  <h1>Admin Dashboard - Job Applications</h1>
+  <table id="applications-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Applied At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Load applications from localStorage
+    function loadApplications() {
+      const applications = JSON.parse(localStorage.getItem("jobApplications")) || [];
+      const tbody = document.querySelector("#applications-table tbody");
+      tbody.innerHTML = "";
+
+      applications.forEach((app, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${app.name}</td>
+          <td>${app.email}</td>
+          <td>${app.title}</td>
+          <td>${app.company}</td>
+          <td>${app.location}</td>
+          <td>${app.appliedAt}</td>
+          <td><button class="delete-btn" onclick="deleteApplication(${index})">Delete</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function deleteApplication(index) {
+      const applications = JSON.parse(localStorage.getItem("jobApplications")) || [];
+      applications.splice(index, 1);
+      localStorage.setItem("jobApplications", JSON.stringify(applications));
+      loadApplications();
+    }
+
+    window.onload = loadApplications;
+  </script>
+</body>
+</html>
+<!-- End -->
