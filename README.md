@@ -44,3 +44,8 @@ To simplify the job searching process by providing:
 - This project is built using **frontend technologies only**
 - No backend or database is used
 - Intended for **educational and demonstration purposes**
+
+## 📢 Acknowledgment
+This project was developed as part of an academic mini project to gain practical experience in web development.
+
+#HireSphere #JobSearchWebsite #WebDevelopment #HTML #CSS #JavaScript
