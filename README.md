@@ -27,7 +27,7 @@ To simplify the job searching process by providing:
 - Delete applications
 - Secure logout functionality
 
----
+
 ## 🧠 Technologies Used
 - **HTML5** – Page structure
 - **CSS3** – Styling and responsiveness
@@ -35,4 +35,4 @@ To simplify the job searching process by providing:
 - **Adzuna Jobs API** – Live job data
 - **Browser LocalStorage** – Data persistence
 
----
+
