@@ -35,4 +35,12 @@ To simplify the job searching process by providing:
 - **Adzuna Jobs API** – Live job data
 - **Browser LocalStorage** – Data persistence
 
+## 👩‍💻 Project Team
+- **Krithika**
+- **Rakshitha**
 
+
+## 📌 Note
+- This project is built using **frontend technologies only**
+- No backend or database is used
+- Intended for **educational and demonstration purposes**
