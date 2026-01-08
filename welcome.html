@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to HireSphere</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('background.jpeg') no-repeat center center/cover fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px; /* Adjusted padding for better alignment */
+            z-index: 1000;
+        }
+        
+        .header-logo {
+            height: 200px; /* Reduced logo size for the header */
+        }
+        
+        .nav-buttons a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .welcome-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .welcome-content h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .welcome-content #greeting-message {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        /* Media queries for smaller screens */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+            }
+            .nav-buttons {
+                margin-top: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+            .nav-buttons a {
+                margin: 5px;
+            }
+            .welcome-content h1 {
+                font-size: 2rem;
+            }
+            .welcome-content #greeting-message {
+                font-size: 2.5%;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <a href="welcome.html" class="logo">
+        <img src="Logo.png" alt="HireSphere Logo" class="header-logo">
+    </a>
+    
+    <nav class="nav-buttons">
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<div class="welcome-content">
+    <p id="greeting-message"></p>
+    <h1>Welcome to HireSphere</h1>
+</div>
+<script>
+    function displayGreeting() {
+        // Get the current hour of the day (0-23)
+        const hour = new Date().getHours();
+        const greetingEl = document.getElementById('greeting-message');
+        let greeting = 'Welcome!';
+
+        if (hour < 12) {
+            greeting = 'Good Morning! ☀️';
+        } else if (hour < 17) {
+            greeting = 'Good Afternoon! 🌞';
+        } else {
+            greeting = 'Good Evening! 🌇';
+        }
+
+        // Set the text content of the greeting element
+        if (greetingEl) {
+            greetingEl.textContent = greeting;
+        }
+    }
+    window.onload = displayGreeting;
+</script>
+</body>
+</html>

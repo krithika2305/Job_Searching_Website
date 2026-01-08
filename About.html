@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - HireSphere</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #58606e;
+      color: #4a4a4a;
+      line-height: 1.6;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('background3.jpeg') no-repeat center center/cover;
+
+    }
+
+    header {
+      background: linear-gradient(to bottom, #e0f2f7, #6fb3ea);
+      display: flex;
+      justify-content:right;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 20px;
+    }
+    .logo-overlay {
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      z-index: 2;
+    }
+    .logo-overlay img {
+      height: 90px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      color: #007bff;
+      margin-left: 10px;
+    }
+
+    nav a {
+      color: #555;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      margin-left: 20px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #007bff;
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 900px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1{
+      color: #007bff;
+    }
+    h2 {
+      color: #007bff;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+      margin-top: 30px;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        color: white;
+    }
+    p{
+      color: white;
+    }
+    footer {
+        text-align: center;
+        background-color: #007bff;
+        color: white;
+        padding: 20px 0;
+        margin-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+      nav {
+        margin-top: 10px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+        width: 100%;
+      }
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-overlay">
+    <img src="Logo1.png" alt="HireSphere Logo">
+    </div>
+  <nav>
+    <a href="index1.html">Home</a>
+    <a href="About.html">About Us</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>About HireSphere</h1>
+  <p>Finding your next career opportunity shouldn’t be complicated. Our platform is designed to bridge the gap between job seekers and employers through innovative technology, personalized recommendations, and a seamless hiring experience.</p>
+
+  <h2>Our Story</h2>
+  <p>Founded in 2025, HireSphere was created with a mission to transform the way people connect with opportunities. We saw a need for a modern job search experience that not only lists vacancies but also helps candidates discover roles that align with their skills, goals, and values.</p>
+
+  <h2>Our Mission</h2>
+  <p>To empower individuals and organizations by simplifying the hiring process, ensuring that everyone has access to reliable and rewarding career opportunities.</p>
+
+  <h2>Why HireSphere?</h2>
+  <p>With a clean and user-friendly interface, advanced filters, and a commitment to transparency, HireSphere is your go-to platform for finding jobs that truly fit your career aspirations.</p>
+</div>
+
+<footer>
+  <p>© 2025 HireSphere. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

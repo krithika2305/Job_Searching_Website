@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | HireSphere</title>
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('background.jpeg') no-repeat center center/cover fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        /* Custom styles for form elements */
+        .form-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            max-width: 450px;
+            width: 90%;
+        }
+        /* Custom error message styling */
+        .error {
+            color: #ef4444; /* Tailwind red-500 */
+            font-size: 0.875rem; /* text-sm */
+            margin-top: 0.25rem;
+        }
+        /* Style the header for better alignment */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            z-index: 1000;
+        }
+        .header .logo {
+            height: 50px;
+        }
+        .nav-buttons a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .nav-buttons a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        input::placeholder {
+            color: #4b5563; 
+        }
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: #1a202c;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+<!-- Header with Logo and Nav Buttons -->
+<header class="header">
+    <a href="welcome.html" class="logo">
+        <img src="Logo1.png" alt="HireSphere Logo" class="h-12">
+    </a>
+    <nav class="nav-buttons">
+        <a href="login.html" class="px-5 py-2 border rounded-full hover:bg-white hover:text-black transition-all">Login</a>
+        <a href="register.html" class="px-5 py-2 border rounded-full hover:bg-white hover:text-black transition-all">Register</a>
+    </nav>
+</header>
+
+<div class="form-card p-8 rounded-2xl shadow-2xl space-y-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800">Create an Account</h2>
+    <form id="registerForm" onsubmit="return validateForm()" class="space-y-5">
+        <div>
+            <label for="name" class="block text-gray-800 font-semibold mb-1">Full Name</label>
+            <input type="text" id="name" name="name" 
+                   class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                   placeholder="Full Name">
+            <div class="error" id="nameError"></div>
+        </div>
+
+        <div>
+            <label for="email" class="block text-gray-800 font-semibold mb-1">Email</label>
+            <input type="email" id="email" name="email" 
+                   class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                   placeholder="Email">
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div>
+            <label for="password" class="block text-gray-800 font-semibold mb-1">Password</label>
+            <input type="password" id="password" name="password" 
+                   class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                   placeholder="Password">
+            <div class="error" id="passwordError"></div>
+            <div id="strengthMessage" class="text-sm mt-1"></div>
+        </div>
+
+        <div>
+            <label for="confirmPassword" class="block text-gray-800 font-semibold mb-1">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" 
+                   class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                   placeholder="Re-enter your password">
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+
+        <div>
+            <label for="phone" class="block text-gray-800 font-semibold mb-1">Phone Number</label>
+            <input type="tel" id="phone" name="phone" 
+                   class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                   placeholder="10 digits">
+            <div class="error" id="phoneError"></div>
+        </div>
+
+        <button type="submit" 
+                class="w-full bg-blue-600 text-white font-bold p-3 rounded-md hover:bg-blue-700 transition-colors">
+            Register
+        </button>
+    </form>
+</div>
+
+<!-- Modal for success message -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <h3 class="text-2xl font-bold mb-4">Success!</h3>
+        <p id="modalMessage" class="text-gray-700"></p>
+        <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">OK</button>
+    </div>
+</div>
+
+<script>
+    /**
+     * Closes the success modal.
+     */
+    function closeModal() {
+        document.getElementById("successModal").style.display = "none";
+    }
+
+    /**
+     * Attaches an event listener to the password input field to provide real-time
+     * feedback on password strength.
+     */
+    document.getElementById("password").addEventListener("input", function() {
+        const password = this.value;
+        const strengthMsg = document.getElementById("strengthMessage");
+
+        // Regex for password validation rules
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+        const isLongEnough = password.length >= 8;
+
+        if (isLongEnough && hasLowercase && hasUppercase && hasNumber && hasSpecialChar) {
+            strengthMsg.textContent = "Strong 💪";
+            strengthMsg.className = "text-sm mt-1 text-green-600";
+        } else if (password.length >= 6) {
+            strengthMsg.textContent = "Medium ⚠️";
+            strengthMsg.className = "text-sm mt-1 text-yellow-500";
+        } else {
+            strengthMsg.textContent = "Too weak 🚫";
+            strengthMsg.className = "text-sm mt-1 text-red-600";
+        }
+    });
+
+    /**
+     * Validates the registration form inputs and stores user data in local storage.
+     * @returns {boolean} - Returns true if the form is valid, otherwise false.
+     */
+    function validateForm() {
+        let isValid = true;
+
+        // Clear previous errors
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("passwordError").textContent = "";
+        document.getElementById("confirmPasswordError").textContent = "";
+        document.getElementById("phoneError").textContent = "";
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const phone = document.getElementById("phone").value.trim();
+
+        // 1. Name validation: Only letters and spaces
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(name) || name.length < 2) {
+            document.getElementById("nameError").textContent = "Name must be at least 2 characters and contain only letters.";
+            isValid = false;
+        }
+
+        // 2. Email validation
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").textContent = "Please enter a valid email address (e.g., name@example.com).";
+            isValid = false;
+        }
+
+        // 3. Password validation: Min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+        // Corrected the regex to ensure a minimum of 8 characters
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+        if (!passwordPattern.test(password)) {
+            document.getElementById("passwordError").textContent = "Password must be at least 8 characters, and include a lowercase letter, an uppercase letter, a number, and a special character.";
+            isValid = false;
+        }
+
+        // 4. Confirm password validation
+        if (password !== confirmPassword) {
+            document.getElementById("confirmPasswordError").textContent = "Passwords do not match.";
+            isValid = false;
+        }
+
+        // 5. Phone number validation: 10 digits
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+            document.getElementById("phoneError").textContent = "Phone number must be exactly 10 digits.";
+            isValid = false;
+        }
+
+        if (isValid) {
+            // Store registration data in localStorage
+            const userData = {
+                username: email, // Using email as username
+                password: password
+            };
+            localStorage.setItem('registeredUser', JSON.stringify(userData));
+
+            const modal = document.getElementById("successModal");
+            document.getElementById("modalMessage").textContent = "Registration successful! You will be redirected to the login page.";
+            modal.style.display = "flex";
+            
+            // Redirect to login page after a short delay
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000); // Redirect after 2 seconds
+        }
+
+        return false;
+    }
+</script>
+
+</body>
+</html>
